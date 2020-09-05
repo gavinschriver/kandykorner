@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { LocationContext } from "../locations/LocationProvider";
 import { EmployeeContext } from "./EmployeeProvider";
+import Route from "react-router-dom"
 
-export const EmployeeForm = () => {
+export const EmployeeForm = (props) => {
     const { locations } = useContext(LocationContext);
     const { addEmployee } = useContext(EmployeeContext);
 
@@ -30,7 +31,9 @@ export const EmployeeForm = () => {
         hireLoc.current.value &&
         hirePay.current.value
       ) {
-        addEmployee(newHire);
+          addEmployee(newHire).then(() => {
+              props.history.push("/employees")
+          })
       }
     } else alert("please fill out all forms to my utter satisfaction");
   };
