@@ -1,10 +1,10 @@
 import React from "react"
 import "./Locations.css"
 
-export const Location = ({ location }) => (
+export const Location = ({ location, id }) => (
     <section className="location">
-        <h3 className="location__address">{location.address}</h3>
-        <div className="location__sqft">{location.sqft}</div>
-        <div className="location__name">{location.id}</div>
+        <h3 className="location__address">Address: {location.address}</h3>
+        <div className="location__sqft">Square Feet: {location.sqft}</div>
+        <div className="location__handicap">{location.handicap}</div>
   </section>   
 )
