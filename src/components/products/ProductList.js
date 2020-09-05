@@ -18,7 +18,6 @@ export const ProductList = () => {
                 products.map(po => {
                     const pto = productTypes.find(pt => pt.id === po.productTypeId) || {}
                         
-                    
                     return <Product key={po.id} prod={po} prodType={pto} /> 
             })
             }

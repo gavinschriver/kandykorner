@@ -5,6 +5,7 @@ import { ProductProvider } from "./products/ProductProvider";
 import { LocationList } from "./locations/LocationList";
 import { ProductList } from "./products/ProductList";
 import { ProductTypeProvider } from "./products/productTypes/ProductTypeProvider";
+import { EmployeeList } from "./employees/EmployeeList";
 
 export const ApplicationViews = (props) => {
   return (
@@ -21,7 +22,11 @@ export const ApplicationViews = (props) => {
             <ProductList />
           </Route>
         </ProductTypeProvider>
-      </ProductProvider>
+          </ProductProvider>
+          
+          <Route path="/employees">
+              <EmployeeList/>
+          </Route>
     </>
   );
 };
