@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { LocationContext } from "../locations/LocationProvider";
+import { EmployeeContext } from "./EmployeeProvider";
 
 export const EmployeeForm = () => {
-  const { locations } = useContext(LocationContext);
+    const { locations } = useContext(LocationContext);
+    const { addEmployee } = useContext(EmployeeContext);
 
   const hireName = useRef(null);
   const hireLoc = useRef(null);
@@ -28,7 +30,7 @@ export const EmployeeForm = () => {
         hireLoc.current.value &&
         hirePay.current.value
       ) {
-        console.log(newHire);
+        addEmployee(newHire);
       }
     } else alert("please fill out all forms to my utter satisfaction");
   };
