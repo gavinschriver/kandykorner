@@ -19,7 +19,8 @@ export const Employee = ({ EO }) => {
               PropNameFixed = "Store Square Feet";
               break;
             case "handicap":
-              PropNameFixed = "Handicap Accessible?";
+                  PropNameFixed = "Handicap Accessible?";
+                  entry[1] = "true"
               break;
             case "address":
               PropNameFixed = "Store Address";
