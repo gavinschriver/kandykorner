@@ -10,16 +10,21 @@ export const NavBar = (props) => {
           Kandy Korner
         </Link>   
           </li>
-      <li className="navbar__item active">
+      <li className="navbar__item">
         <Link className="navbar__link" to="/products">
           Products
         </Link>   
           </li>
-      <li className="navbar__item active">
+      <li className="navbar__item">
         <Link className="navbar__link" to="/employees">
           Employees
         </Link>   
           </li>
+      <button className="navBar__item">
+        <Link className="navbar__link" to="/cart">
+          View Cart
+        </Link>
+      </button>
     </ul>
   );
 };

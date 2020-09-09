@@ -9,6 +9,7 @@ import { EmployeeList } from "./employees/EmployeeList";
 import { EmployeeForm } from "./employees/EmployeeForm";
 import { EmployeeProvider } from "./employees/EmployeeProvider";
 import { CustomerProductProvider } from "./customersProducts/CustomerProductProvider";
+import { CartList } from "./cart/CartList";
 
 export const ApplicationViews = (props) => {
   return (
@@ -43,6 +44,16 @@ export const ApplicationViews = (props) => {
           ></Route>
         </EmployeeProvider>
       </LocationProvider>
+
+      <CustomerProductProvider>
+        <ProductProvider>
+      <Route
+            exact
+            path="/cart"
+            render={(props) => <CartList {...props} />}
+          ></Route>
+          </ProductProvider>
+        </CustomerProductProvider>
     </>
   );
 };

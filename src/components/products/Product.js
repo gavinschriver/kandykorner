@@ -6,7 +6,7 @@ export const Product = ({ prod, prodType }) => {
   const { addCustomerProduct } = useContext(CustomerProductContext);
 
   return (
-    <section className="product">
+    <section className="product" id={prod.id}>
       <div className="product__name">{prod.name}</div>
       <div className="product__price">{prod.price}</div>
       <div className="product__type">{prodType.type}</div>
