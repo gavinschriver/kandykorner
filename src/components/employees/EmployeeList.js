@@ -15,11 +15,13 @@ export const EmployeeList = (props) => {
     <>
       <article className="employeeList">
         <h1>EMPLOYEES WILL B HERE SOON...</h1>
+        
         <section className="employees">
           {employees.map((e) => {
             return <Employee key={e.id} EO={e} />;
           })}
         </section>
+
         <button
           onClick={() => {
             props.history.push("/employees/hire");
@@ -27,6 +29,7 @@ export const EmployeeList = (props) => {
         >
           Add a dang HEMPPLOYEE
         </button>
+
       </article>
     </>
   );

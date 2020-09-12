@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Employees.css";
+import { EmployeeContext } from "./EmployeeProvider"
 
 export const Employee = ({ EO }) => {
+
+  const { yaFired } = useContext(EmployeeContext)
+
   return (
     <div className="employee">
       <div className="employee__name">name: {EO.name}</div>
@@ -34,6 +38,11 @@ export const Employee = ({ EO }) => {
           );
         })}
       </div>
+      <button onClick={() => {
+        const employeeId = parseInt(EO.id)
+        yaFired(employeeId)
+      }}
+      >YAFIREDDD</button>
     </div>
   );
 };

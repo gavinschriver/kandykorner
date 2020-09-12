@@ -6,7 +6,7 @@ export const CustomerProductProvider = (propsObj) => {
   const [customersProducts, setCustomersProducts] = useState([]);
 
   const getCustomersProducts = () => {
-    return fetch(`http://localhost:8090/customersProducts`)
+    return fetch(`http://localhost:8090/customersProducts?_expand=customer&_expand=product`)
       .then((res) => res.json())
       .then(setCustomersProducts);
   };
@@ -20,9 +20,15 @@ export const CustomerProductProvider = (propsObj) => {
       body: JSON.stringify(newCustomerProduct),
     }).then(getCustomersProducts);
   };
+
+  const removeCustomerProduct = (customerProductId) => {
+    return fetch(`http://localhost:8090/customersProducts/${customerProductId}`, {
+      method: "DELETE",
+    }).then(getCustomersProducts);
+  };
     
     return (
-        <CustomerProductContext.Provider value={{ customersProducts, getCustomersProducts, addCustomerProduct }}>
+        <CustomerProductContext.Provider value={{ customersProducts, getCustomersProducts, addCustomerProduct, removeCustomerProduct }}>
             {propsObj.children}
         </CustomerProductContext.Provider>
 )

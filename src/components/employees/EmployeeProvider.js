@@ -20,10 +20,18 @@ export const EmployeeProvider = (propsObj) => {
       body: JSON.stringify(newEmployee),
     }).then(getEmployees);
   };
-    
-    return (
-        <EmployeeContext.Provider value={{ employees, getEmployees, addEmployee }}>
-            {propsObj.children}
-        </EmployeeContext.Provider>
-)
+
+  const yaFired = (yaFiredId) => {
+    return fetch(`http://localhost:8090/employees/${yaFiredId}`, {
+      method: "DELETE",
+    }).then(getEmployees);
+  };
+
+  return (
+    <EmployeeContext.Provider
+      value={{ employees, getEmployees, addEmployee, yaFired }}
+    >
+      {propsObj.children}
+    </EmployeeContext.Provider>
+  );
 };

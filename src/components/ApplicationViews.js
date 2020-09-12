@@ -4,7 +4,7 @@ import { LocationProvider } from "./locations/LocationProvider";
 import { ProductProvider } from "./products/ProductProvider";
 import { LocationList } from "./locations/LocationList";
 import { ProductList } from "./products/ProductList";
-import { ProductTypeProvider } from "./products/productTypes/ProductTypeProvider";
+import { ProductTypeProvider, ProductTypeContext } from "./products/productTypes/ProductTypeProvider";
 import { EmployeeList } from "./employees/EmployeeList";
 import { EmployeeForm } from "./employees/EmployeeForm";
 import { EmployeeProvider } from "./employees/EmployeeProvider";
@@ -46,6 +46,7 @@ export const ApplicationViews = (props) => {
       </LocationProvider>
 
       <CustomerProductProvider>
+        <ProductTypeProvider>
         <ProductProvider>
       <Route
             exact
@@ -53,6 +54,7 @@ export const ApplicationViews = (props) => {
             render={(props) => <CartList {...props} />}
           ></Route>
           </ProductProvider>
+          </ProductTypeProvider>
         </CustomerProductProvider>
     </>
   );

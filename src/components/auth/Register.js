@@ -21,7 +21,7 @@ export const Register = (props) => {
         if (password.current.value === verifyPassword.current.value) {
             existingUserCheck()
                 .then(() => {
-                    fetch("http://localhost:8088/customers", {
+                    fetch("http://localhost:8090/customers", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
