@@ -88,7 +88,11 @@ export const Employee = ({ EO }) => {
         showHideMatchingPlayers ?
           <div>AH SHIT ITS AN ARRAY{
             employee.employeesPlayers.map(epo => {
-              return <div>{epo.playerId}</div>
+              const matchingPlayer = playersArray.find(p => {
+                return epo.playerId === p.id
+              })
+
+              return <div>{matchingPlayer.name}</div>
             })
           }</div> 
           : <div></div>
