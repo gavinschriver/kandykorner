@@ -1,11 +1,15 @@
 import React, { useContext, useEffect, useRef } from "react";
 import { LocationContext } from "../locations/LocationProvider";
 import { EmployeeContext } from "./EmployeeProvider";
-import Route from "react-router-dom"
+import Route from "react-router-dom";
 
 export const EmployeeForm = (props) => {
-    const { locations } = useContext(LocationContext);
-    const { addEmployee } = useContext(EmployeeContext);
+  const { locations } = useContext(LocationContext);
+  const { addEmployee, editEmployeeId } = useContext(EmployeeContext);
+
+  useEffect(() => {
+    alert(`employee form heard a change to ${editEmployeeId}`);
+  }, [editEmployeeId]);
 
   const hireName = useRef(null);
   const hireLoc = useRef(null);
@@ -31,9 +35,9 @@ export const EmployeeForm = (props) => {
         hireLoc.current.value &&
         hirePay.current.value
       ) {
-          addEmployee(newHire).then(() => {
-              props.history.push("/employees")
-          })
+        addEmployee(newHire).then(() => {
+          props.history.push("/employees");
+        });
       }
     } else alert("please fill out all forms to my utter satisfaction");
   };

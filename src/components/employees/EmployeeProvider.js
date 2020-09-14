@@ -5,8 +5,14 @@ export const EmployeeContext = React.createContext();
 export const EmployeeProvider = (propsObj) => {
   const [employees, setEmployees] = useState([]);
 
+  const [editEmployeeId, setEditEmployeeId] = useState(0);
+
+  useEffect(() => {
+    // alert('well thats interesting')
+  }, [])
+
   const getEmployees = () => {
-    return fetch(`http://localhost:8090/employees?_expand=location`)
+    return fetch(`http://localhost:8090/employees?_expand=location&_embed=employeesPlayers`)
       .then((res) => res.json())
       .then(setEmployees);
   };
@@ -29,7 +35,14 @@ export const EmployeeProvider = (propsObj) => {
 
   return (
     <EmployeeContext.Provider
-      value={{ employees, getEmployees, addEmployee, yaFired }}
+      value={{
+        employees,
+        getEmployees,
+        addEmployee,
+        yaFired,
+        editEmployeeId,
+        setEditEmployeeId,
+      }}
     >
       {propsObj.children}
     </EmployeeContext.Provider>

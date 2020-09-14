@@ -1,15 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { CustomerProductContext } from "../customersProducts/CustomerProductProvider";
 import "./Products.css";
 
-export const Product = ({ prod, prodType }) => {
+export const Product = ({ prod }) => {
   const { addCustomerProduct } = useContext(CustomerProductContext);
 
+  const [product, setProduct] = useState({ productType: {} } || {})
+
+  const [productTypeState, setProductTypeState] = useState(false)
+
+  const showHideProductType = () => {
+    if (!productTypeState) {
+      setProductTypeState(true)
+    }
+    else if (productTypeState) {
+      setProductTypeState(false)
+    }
+  }
+
+  useEffect(() => {
+    setProduct(prod)
+  }, [])
+
   return (
-    <section className="product" id={prod.id}>
-      <div className="product__name">{prod.name}</div>
-      <div className="product__price">{prod.price}</div>
-      <div className="product__type">{prodType.type}</div>
+    <section className="product" id={product.id}>
+      <div className="product__name">{product.name}</div>
+      <div className="product__price">{product.price}</div>
+      {
+        productTypeState ? 
+          <div>Product Type: {product.productType.type}</div>
+          : <div></div>
+      }
       <button
         className="product__addTOCartButton"
         onClick={(e) => {
@@ -22,6 +43,13 @@ export const Product = ({ prod, prodType }) => {
       >
         Add to Cart
       </button>
+      <button
+        onClick={(e) => {
+          e.preventDefault()
+          showHideProductType()
+        }
+        }
+      >Display Product Type?</button>
     </section>
   );
 };
